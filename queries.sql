@@ -47,3 +47,12 @@ values('Lambda Swag', 'Awesome Lambda Memorabilia');
 insert into categories (categoryName, Description)
 values('Books', 'Awesome Books'), ('Pastry', 'Cakes and Macaroons');
 
+-- Filter List from Categories to 'lambda%' only
+select * from categories
+where categoryName like 'lambda%';
+
+-- partial searches 
+select * from categories
+where categoryName like '%am%da%';
+
+
