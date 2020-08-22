@@ -75,3 +75,5 @@ where categoryId = 9;
 delete from categories
 where categoryId = 9;
 
+-- Checking to see if deleted already 
+select * from categories order by categoryId desc;
