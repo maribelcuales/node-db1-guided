@@ -16,6 +16,7 @@ multiline
 comments
 */
 
+
 -- Products 
 select * from products where price > 100;
 
@@ -55,9 +56,22 @@ where categoryName like 'lambda%';
 select * from categories
 where categoryName like '%am%da%';
 
+
+-- Updating Data 
+
 -- select * from categories
 update categories 
 	set categoryName = 'LS Swag', description = 'Lambda Swag'
 where categoryId = 9;
 
+-- checking if catergoryName was updated 
+select * from categories
+where categoryId = 9;
+
+
+-- removing data 
+
+-- select * from categories
+delete from categories
+where categoryId = 9;
 
