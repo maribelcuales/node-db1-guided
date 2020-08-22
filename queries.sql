@@ -16,3 +16,25 @@ multiline
 comments
 */
 
+-- Products 
+select * from products where price > 100;
+
+select * from products where price >= 100 and price < 200;
+
+-- select the 5 most expensive products on the catalog 
+select * 
+from products
+order by price desc
+limit 5;
+
+-- select the 5 most cheapest products on the catalog 
+select * 
+from products
+order by price
+limit 5;
+
+-- order by multiple columns 
+select country, city, address, customerName from customers
+order by country, city, customerName
+
+
