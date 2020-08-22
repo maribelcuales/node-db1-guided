@@ -55,4 +55,9 @@ where categoryName like 'lambda%';
 select * from categories
 where categoryName like '%am%da%';
 
+-- select * from categories
+update categories 
+	set categoryName = 'LS Swag', description = 'Lambda Swag'
+where categoryId = 9;
+
 
