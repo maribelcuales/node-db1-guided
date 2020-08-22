@@ -38,3 +38,12 @@ select country, city, address, customerName from customers
 order by country, city, customerName
 
 
+-- categories 
+-- Adding data 
+insert into categories (categoryName, Description)
+values('Lambda Swag', 'Awesome Lambda Memorabilia');
+
+-- Add more than one set of Values 
+insert into categories (categoryName, Description)
+values('Books', 'Awesome Books'), ('Pastry', 'Cakes and Macaroons');
+
