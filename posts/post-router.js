@@ -64,7 +64,26 @@ router.post('/', (req, res) => {
 });
 
 router.put('/:id', (req, res) => {
+  const changes = req.body;
 
+  // validate the data 
+  db('posts')
+    .where({ id: req.params.id })
+    .update(changes)
+    .then(count => {
+      // the count is the number of records updated 
+      // if the count is 0, it means the record was not found 
+      if(count > 0) {
+        res.status(201).json({ data: count });
+      } else {
+        res.status(404).json({ message: "record not found by that Id "}); 
+      }
+    })
+    .catch(error => {
+      //save the error to a log somewhere 
+      console.log(error); 
+      res.status(500).json({ message: error.message });
+    });
 });
 
 router.delete('/:id', (req, res) => {
