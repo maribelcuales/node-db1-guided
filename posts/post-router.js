@@ -40,7 +40,27 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+  const post = req.body;
 
+  // a post must have title and contents 
+  if(isValidPost(post)) {
+    // once you know the post is valid then try to save to the db
+    db("posts")
+      // there will be a warning in the console about .returning(), ignore it for SQLite
+      .insert(post, "id")   
+      .then(ids => {
+        res.status(201).json({ data: ids });
+      })
+    .catch(error => {
+      //save the error to a log somewhere 
+      console.log(error); 
+      res.status(500).json({ message: error.message });
+    });
+  } else {
+    res
+      .status(400)
+      .json({ message: "please provide title and contents for the post "});
+  }
 });
 
 router.put('/:id', (req, res) => {
@@ -50,5 +70,9 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
 
 });
+
+function isValidPost(post) {
+  return Boolean(post.title && post.contents);
+}
 
 module.exports = router;
